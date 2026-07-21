@@ -167,17 +167,22 @@ export const Contact = () => {
 
                 <div>
                   <label className="block text-xs font-bold uppercase text-on-surface mb-2">Tjeneste</label>
-                  <select 
-                    value={formData.service}
-                    onChange={e => setFormData({...formData, service: e.target.value})}
-                    className="w-full bg-surface-low border border-surface-highest rounded-xl p-3 text-sm focus:outline-none focus:border-primary"
-                  >
-                    <option value="Regnskapsføring">Regnskapsføring</option>
-                    <option value="Rådgivning">Rådgivning</option>
-                    <option value="Lønn og personal">Lønn og personal</option>
-                    <option value="Bedriftsetablering">Bedriftsetablering</option>
-                    <option value="Annet">Annet</option>
-                  </select>
+                  <div className="relative">
+                    <select 
+                      value={formData.service}
+                      onChange={e => setFormData({...formData, service: e.target.value})}
+                      className="w-full bg-surface-low border border-surface-highest rounded-xl p-3 pr-10 text-sm focus:outline-none focus:border-primary appearance-none cursor-pointer text-on-surface"
+                    >
+                      <option value="Regnskapsføring">Regnskapsføring</option>
+                      <option value="Rådgivning">Rådgivning</option>
+                      <option value="Lønn og personal">Lønn og personal</option>
+                      <option value="Bedriftsetablering">Bedriftsetablering</option>
+                      <option value="Annet">Annet</option>
+                    </select>
+                    <span className="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none text-xl">
+                      expand_more
+                    </span>
+                  </div>
                 </div>
 
                 <div>

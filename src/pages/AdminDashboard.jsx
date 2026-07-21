@@ -519,16 +519,21 @@ export const AdminDashboard = () => {
                     </div>
                     <div>
                       <label className="block text-xs font-bold uppercase mb-1">Møtetype</label>
-                      <select
-                        value={newApt.type}
-                        onChange={e => setNewApt({...newApt, type: e.target.value})}
-                        className="w-full bg-surface-low border border-surface-highest rounded-xl p-3 text-sm focus:outline-none focus:border-primary"
-                      >
-                        <option value="Fysisk i Lyngdal">Fysisk i Lyngdal</option>
-                        <option value="Fysisk i Farsund">Fysisk i Farsund</option>
-                        <option value="Teams / Digitalt">Teams / Digitalt</option>
-                        <option value="Telefonmøte">Telefonmøte</option>
-                      </select>
+                      <div className="relative">
+                        <select
+                          value={newApt.type}
+                          onChange={e => setNewApt({...newApt, type: e.target.value})}
+                          className="w-full bg-surface-low border border-surface-highest rounded-xl p-3 pr-10 text-sm focus:outline-none focus:border-primary appearance-none cursor-pointer text-on-surface"
+                        >
+                          <option value="Fysisk i Lyngdal">Fysisk i Lyngdal</option>
+                          <option value="Fysisk i Farsund">Fysisk i Farsund</option>
+                          <option value="Teams / Digitalt">Teams / Digitalt</option>
+                          <option value="Telefonmøte">Telefonmøte</option>
+                        </select>
+                        <span className="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none text-xl">
+                          expand_more
+                        </span>
+                      </div>
                     </div>
                     <button 
                       type="submit"
