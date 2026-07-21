@@ -22,8 +22,11 @@ export const Navbar = () => {
 
   const isActive = (path) => location.pathname === path;
 
+  const isAdminSession = typeof window !== 'undefined' && localStorage.getItem('shift_admin_session') === 'true';
+  const topClass = isAdminSession ? 'top-9 sm:top-8' : 'top-0';
+
   return (
-    <header className={`sticky top-0 w-full z-50 transition-[height,background-color] duration-300 ${scrolled ? 'bg-surface/90 backdrop-blur-md shadow-sm h-16' : 'bg-surface/80 backdrop-blur-md h-20'}`}>
+    <header className={`fixed ${topClass} left-0 right-0 w-full z-50 transition-[height,background-color,top] duration-300 ${scrolled ? 'bg-surface/90 backdrop-blur-md shadow-sm h-16' : 'bg-surface/80 backdrop-blur-md h-20'}`}>
       <nav className="flex justify-between items-center px-4 md:px-margin-desktop h-full max-w-container-max mx-auto">
         <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex items-center gap-3 py-1 cursor-pointer shrink-0">
           <img 

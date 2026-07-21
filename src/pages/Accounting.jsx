@@ -10,6 +10,7 @@ export const Accounting = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
+      className="pt-20"
     >
       {/* Hero Section */}
       <section className="relative py-section-padding overflow-hidden">
