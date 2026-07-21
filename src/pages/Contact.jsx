@@ -73,7 +73,7 @@ export const Contact = () => {
           {/* Info Cards */}
           <div className="lg:col-span-5 space-y-6">
             <div className="glass-card p-6 rounded-2xl flex items-start gap-4 hover:-translate-y-1 transition-transform">
-              <div className="bg-primary-container p-3 rounded-xl text-primary">
+              <div className="bg-primary p-3 rounded-xl text-white shadow-sm">
                 <span className="material-symbols-outlined">call</span>
               </div>
               <div>
@@ -86,7 +86,7 @@ export const Contact = () => {
             </div>
 
             <div className="glass-card p-6 rounded-2xl flex items-start gap-4 hover:-translate-y-1 transition-transform">
-              <div className="bg-primary-container p-3 rounded-xl text-primary">
+              <div className="bg-primary p-3 rounded-xl text-white shadow-sm">
                 <span className="material-symbols-outlined">mail</span>
               </div>
               <div>
@@ -99,7 +99,7 @@ export const Contact = () => {
             </div>
 
             <div className="glass-card p-6 rounded-2xl flex items-start gap-4 hover:-translate-y-1 transition-transform">
-              <div className="bg-primary-container p-3 rounded-xl text-primary">
+              <div className="bg-primary p-3 rounded-xl text-white shadow-sm">
                 <span className="material-symbols-outlined">location_on</span>
               </div>
               <div>
