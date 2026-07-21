@@ -119,7 +119,7 @@ const defaultContent = {
     heroBadge: 'SPESIALISERT EKSPERTISE',
     heroTitle: 'Skreddersydd regnskap for din bransje',
     heroDesc: 'Ulike bransjer har ulike utfordringer og krav. Vi har spisskompetanse innen en rekke nøkkelnæringer i regionen.',
-    heroImage: 'https://images.unsplash.com/photo-1541888946425-d0fbb186a5b7?auto=format&fit=crop&w=1200&q=80',
+    heroImage: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1200&q=80',
     title: 'Bransjer vi kjenner ut og inn',
     b1Title: 'Bygg & Anlegg',
     b1Desc: 'Prosjektregnskap, prosjektstyring og kontroll på timelister og underleverandører.',

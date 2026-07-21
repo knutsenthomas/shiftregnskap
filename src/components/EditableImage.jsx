@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useContent } from '@/contexts/ContentContext';
 
+const FALLBACK_IMAGE = 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1200&q=80';
+
 export const EditableImage = ({ 
   pageKey, 
   fieldKey, 
-  defaultSrc = '', 
+  defaultSrc = FALLBACK_IMAGE, 
   alt = '', 
   className = '' 
 }) => {
@@ -21,6 +23,12 @@ export const EditableImage = ({
     setShowModal(false);
   };
 
+  const handleImageError = (e) => {
+    if (e.currentTarget.src !== FALLBACK_IMAGE) {
+      e.currentTarget.src = FALLBACK_IMAGE;
+    }
+  };
+
   const presetImages = [
     { title: 'Kontor 1', url: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80' },
     { title: 'Kontor 2', url: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1200&q=80' },
@@ -31,12 +39,12 @@ export const EditableImage = ({
   ];
 
   if (!isEditMode) {
-    return <img src={currentSrc} alt={alt} className={className} />;
+    return <img src={currentSrc} onError={handleImageError} alt={alt} className={className} />;
   }
 
   return (
     <div className="relative group/img-edit inline-block w-full h-full">
-      <img src={currentSrc} alt={alt} className={`${className} ring-4 ring-primary/40`} />
+      <img src={currentSrc} onError={handleImageError} alt={alt} className={`${className} ring-4 ring-primary/40`} />
       <button 
         type="button"
         onClick={() => { setInputUrl(currentSrc); setShowModal(true); }}
@@ -77,7 +85,7 @@ export const EditableImage = ({
                       onClick={() => setInputUrl(p.url)}
                       className="group/p border border-surface-highest rounded-lg overflow-hidden text-left hover:border-primary transition-all"
                     >
-                      <img src={p.url} alt={p.title} className="w-full h-16 object-cover" />
+                      <img src={p.url} onError={handleImageError} alt={p.title} className="w-full h-16 object-cover" />
                       <span className="block text-[10px] p-1 truncate font-semibold text-center">{p.title}</span>
                     </button>
                   ))}
