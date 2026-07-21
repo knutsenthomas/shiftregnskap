@@ -22,14 +22,24 @@ import { Industries } from '@/pages/Industries';
 import { ClientPortal } from '@/pages/ClientPortal';
 import { Pricing } from '@/pages/Pricing';
 import { AdminDashboard } from '@/pages/AdminDashboard';
+import { AdminLogin } from '@/pages/AdminLogin';
 import { ServiceDetail } from '@/pages/ServiceDetail';
 import { PrivacyPolicy } from '@/pages/PrivacyPolicy';
 
 const LayoutContent = () => {
   const location = useLocation();
   const isAdminPage = location.pathname === '/admin';
+  const isAdminLoginPage = location.pathname === '/admin/login';
+  const isAdminLoggedIn = localStorage.getItem('shift_admin_session') === 'true';
+
+  if (isAdminLoginPage) {
+    return <AdminLogin />;
+  }
 
   if (isAdminPage) {
+    if (!isAdminLoggedIn) {
+      return <AdminLogin />;
+    }
     return <AdminDashboard />;
   }
 
@@ -50,6 +60,7 @@ const LayoutContent = () => {
           <Route path="/kundeportal" element={<ClientPortal />} />
           <Route path="/priser" element={<Pricing />} />
           <Route path="/personvern" element={<PrivacyPolicy />} />
+          <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/tjeneste/:id" element={<ServiceDetail />} />
         </Routes>
       </main>

@@ -19,14 +19,7 @@ export const AdminBar = () => {
       const isAuth = localStorage.getItem('shift_admin_session') === 'true';
       setIsAdminLoggedIn(isAuth);
     };
-
-    // Also if on /admin, automatically set admin session
-    if (location.pathname === '/admin') {
-      localStorage.setItem('shift_admin_session', 'true');
-      setIsAdminLoggedIn(true);
-    } else {
-      checkAuth();
-    }
+    checkAuth();
   }, [location.pathname]);
 
   const handleLogout = () => {
