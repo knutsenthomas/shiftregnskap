@@ -23,7 +23,7 @@ export const Footer = () => {
             Din trygge og pålitelige partner for regnskap, lønn og rådgivning på Sørlandet.
           </p>
           <a 
-            href="https://facebook.com" 
+            href={siteInfo?.facebookUrl || "https://www.facebook.com/profile.php?id=100087412625499"} 
             target="_blank" 
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-primary font-bold text-sm hover:underline hover:opacity-80 transition-opacity pt-1"

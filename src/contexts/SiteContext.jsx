@@ -9,6 +9,7 @@ const defaultSiteInfo = {
   email: 'bm@shiftregnskap.no',
   address: 'Elvebrinken 1, 4580 Lyngdal',
   hours: 'Man-Fre: 08:00 - 16:00',
+  facebookUrl: 'https://www.facebook.com/profile.php?id=100087412625499',
   locations: ['Lyngdal', 'Farsund', 'Vanse', 'Lista']
 };
 
