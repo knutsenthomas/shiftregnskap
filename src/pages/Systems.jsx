@@ -9,7 +9,6 @@ export const Systems = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="pt-20"
     >
       <section className="relative py-section-padding overflow-hidden">
         <div className="max-w-container-max mx-auto px-4 md:px-margin-desktop grid md:grid-cols-2 gap-12 items-center">

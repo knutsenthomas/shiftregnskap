@@ -8,7 +8,7 @@ export const ClientPortal = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="pt-20 pb-20 min-h-screen"
+      className="pb-20 min-h-screen"
     >
       <section className="py-section-padding max-w-container-max mx-auto px-4 md:px-margin-desktop">
         <div className="text-center max-w-2xl mx-auto mb-12">

@@ -33,7 +33,7 @@ export const Pricing = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="pt-20 pb-16"
+      className="pb-16"
     >
       <section className="bg-primary/5 py-16">
         <div className="max-w-container-max mx-auto px-4 md:px-margin-desktop">
