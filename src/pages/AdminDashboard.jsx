@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useSite } from '@/contexts/SiteContext';
 import { useContent } from '@/contexts/ContentContext';
 
 export const AdminDashboard = () => {
+  useEffect(() => {
+    try {
+      localStorage.setItem('shift_admin_session', 'true');
+    } catch (e) { console.error(e); }
+  }, []);
   const { siteInfo, updateAllSiteInfo } = useSite();
   const { 
     messages, 
