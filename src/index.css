@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #fcf9f8;
+    color: #1b1c1c;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Hanken Grotesk', sans-serif;
+  }
+}
+
+/* Explicit Material Symbols @font-face with font-display: block for instant zero-flash renders */
+@font-face {
+  font-family: 'Material Symbols Outlined';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/materialsymbolsoutlined/v264/kJF1BvYX7BgnkSrUwT8OhrdQw4oELdPIceeII9v6oDM.woff2) format('woff2');
+  font-display: block;
+}
+
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  vertical-align: middle;
+  font-display: block;
+}
+
+.glass-card {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(229, 225, 228, 0.6);
+}
+
+.hero-gradient {
+  background: linear-gradient(135deg, rgba(27, 73, 101, 0.9) 0%, rgba(19, 53, 73, 0.8) 100%);
+}
+
+/* HKM Chat Widget Chrome Jitter Fixes & Hardware Acceleration */
+.hkm-chat-panel {
+  transform: translateZ(0) !important;
+  backface-visibility: hidden !important;
+  will-change: transform, opacity;
+}
+
+.hkm-chat-panel input,
+.hkm-chat-panel textarea,
+.hkm-chat-panel select {
+  display: block !important;
+  width: 100% !important;
+  transform: translateZ(0) !important;
+  backface-visibility: hidden !important;
+}
+
+.hkm-chat-body {
+  position: relative !important;
+  overflow-y: auto;
+}
+
+/* Animated typing dots */
+.hkm-typing-dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.hkm-typing-dots span {
+  width: 6px;
+  height: 6px;
+  background-color: #1B4965;
+  border-radius: 50%;
+  animation: hkmBlink 1.4s infinite ease-in-out both;
+}
+
+.hkm-typing-dots span:nth-child(1) { animation-delay: -0.32s; }
+.hkm-typing-dots span:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes hkmBlink {
+  0%, 80%, 100% { opacity: 0.3; transform: scale(0.8); }
+  40% { opacity: 1; transform: scale(1.2); }
+}
