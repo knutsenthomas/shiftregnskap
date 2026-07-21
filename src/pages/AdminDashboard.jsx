@@ -24,6 +24,7 @@ export const AdminDashboard = () => {
   } = useContent();
 
   const [activeTab, setActiveTab] = useState('inbox');
+  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
 
   // New Service Form State
   const [newServiceForm, setNewServiceForm] = useState({
@@ -99,9 +100,19 @@ export const AdminDashboard = () => {
   ];
 
   return (
-    <div className="flex h-screen w-full bg-surface-low overflow-hidden text-on-surface">
+    <div className="flex h-screen w-full bg-surface-low overflow-hidden text-on-surface flex-col md:flex-row relative">
+      {/* Mobile Backdrop Overlay */}
+      {mobileSidebarOpen && (
+        <div 
+          onClick={() => setMobileSidebarOpen(false)}
+          className="fixed inset-0 bg-black/60 backdrop-blur-xs z-40 md:hidden animate-fadeIn"
+        />
+      )}
+
       {/* 100vh Sidebar Navigation */}
-      <aside className="w-64 md:w-72 bg-primary text-white flex flex-col h-full shrink-0 shadow-2xl z-40 border-r border-white/10">
+      <aside className={`fixed inset-y-0 left-0 w-64 md:w-72 bg-primary text-white flex flex-col h-full shrink-0 shadow-2xl z-50 border-r border-white/10 transition-transform duration-300 md:relative md:translate-x-0 ${
+        mobileSidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
+      }`}>
         {/* Logo at Top */}
         <div className="p-6 border-b border-white/10 bg-primary-dark/40 flex items-center justify-between">
           <Link to="/" className="block">
@@ -111,7 +122,15 @@ export const AdminDashboard = () => {
               className="h-10 w-auto object-contain brightness-0 invert" 
             />
           </Link>
-          <span className="text-[10px] bg-white/20 px-2 py-0.5 rounded font-bold uppercase tracking-wider">Admin</span>
+          <div className="flex items-center gap-2">
+            <span className="text-[10px] bg-white/20 px-2 py-0.5 rounded font-bold uppercase tracking-wider">Admin</span>
+            <button 
+              onClick={() => setMobileSidebarOpen(false)}
+              className="md:hidden text-white/80 hover:text-white p-1"
+            >
+              <span className="material-symbols-outlined text-xl">close</span>
+            </button>
+          </div>
         </div>
 
         {/* Sidebar Menu Items */}
@@ -121,7 +140,10 @@ export const AdminDashboard = () => {
           {menuItems.map(item => (
             <button
               key={item.id}
-              onClick={() => setActiveTab(item.id)}
+              onClick={() => {
+                setActiveTab(item.id);
+                setMobileSidebarOpen(false);
+              }}
               className={`w-full flex items-center justify-between px-4 py-3 rounded-xl font-semibold text-sm transition-all cursor-pointer ${
                 activeTab === item.id 
                   ? 'bg-white text-primary shadow-lg font-bold' 
@@ -175,14 +197,23 @@ export const AdminDashboard = () => {
       </aside>
 
       {/* Main Content Area */}
-      <div className="flex-1 flex flex-col h-full overflow-hidden">
+      <div className="flex-1 flex flex-col h-full overflow-hidden w-full">
         {/* Top Header Bar */}
-        <header className="bg-white border-b border-surface-highest px-8 py-5 flex items-center justify-between shrink-0 shadow-xs">
-          <div>
-            <h1 className="font-headline text-2xl font-bold text-primary capitalize">
-              {menuItems.find(m => m.id === activeTab)?.label || 'Dashboard'}
-            </h1>
-            <p className="text-xs text-on-surface-variant">Administrer din webapplikasjon, meldinger og innhold.</p>
+        <header className="bg-white border-b border-surface-highest px-4 md:px-8 py-4 flex items-center justify-between shrink-0 shadow-xs">
+          <div className="flex items-center gap-3">
+            <button 
+              onClick={() => setMobileSidebarOpen(true)}
+              className="md:hidden text-primary p-2 rounded-lg bg-surface-low border border-surface-highest"
+              aria-label="Åpne adminmeny"
+            >
+              <span className="material-symbols-outlined text-2xl">menu</span>
+            </button>
+            <div>
+              <h1 className="font-headline text-xl md:text-2xl font-bold text-primary capitalize">
+                {menuItems.find(m => m.id === activeTab)?.label || 'Dashboard'}
+              </h1>
+              <p className="text-xs text-on-surface-variant hidden sm:block">Administrer din webapplikasjon, meldinger og innhold.</p>
+            </div>
           </div>
 
           <div className="flex items-center gap-4 text-xs">
