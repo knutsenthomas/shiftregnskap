@@ -23,7 +23,7 @@ export const AdminDashboard = () => {
     toggleEditMode
   } = useContent();
 
-  const [activeTab, setActiveTab] = useState('inbox');
+  const [activeTab, setActiveTab] = useState('overview');
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
 
   // New Service Form State
@@ -91,7 +91,7 @@ export const AdminDashboard = () => {
   const unreadCount = messages.filter(m => !m.read).length;
 
   const menuItems = [
-    { id: 'overview', label: 'Overblikk', icon: 'dashboard' },
+    { id: 'overview', label: 'Oversikt', icon: 'dashboard' },
     { id: 'services', label: 'Tjenester', icon: 'room_service', count: (services || []).length },
     { id: 'inbox', label: 'Innboks', icon: 'mail', badge: unreadCount },
     { id: 'calendar', label: 'Kalender', icon: 'calendar_month', count: appointments.length },
@@ -115,13 +115,20 @@ export const AdminDashboard = () => {
       }`}>
         {/* Logo at Top */}
         <div className="p-6 border-b border-white/10 bg-primary-dark/40 flex items-center justify-between">
-          <Link to="/" className="block">
+          <button 
+            onClick={() => {
+              setActiveTab('overview');
+              setMobileSidebarOpen(false);
+            }} 
+            className="block text-left cursor-pointer"
+            title="Gå til Oversikt"
+          >
             <img 
               src="https://lh3.googleusercontent.com/aida/AP1WRLuaXVoShBBa5_R1VKlJJ2GPNCKti8TjpOwAABadk3JvVna9EIDT1Bv1bTfj_WjN-Ej0zX8ZPzBsWvPzzu-6qwJhAkbMGIyyUL7QRr-YdgIsdgZJ1zU2wYV9Ez-Pq4Z7z0kls0veGq9zVaYywT1SvJNqBdmh8hch_PkfqXHXY3lyDkdnq6npTqAka4YnhTXmpAYktIuK8bYHbxWkWqQpEx3_5I4tOqV7qRyNPAZa9Lxs1oOALv4ltfWbWUE" 
               alt="SHIFT Regnskap Logo" 
               className="h-10 w-auto object-contain brightness-0 invert" 
             />
-          </Link>
+          </button>
           <div className="flex items-center gap-2">
             <span className="text-[10px] bg-white/20 px-2 py-0.5 rounded font-bold uppercase tracking-wider">Admin</span>
             <button 
