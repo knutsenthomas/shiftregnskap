@@ -385,4 +385,7 @@ export const ContentProvider = ({ children }) => {
   );
 };
 
-export const useContent = () => useContext(ContentContext);
+export const useContent = () => {
+  const context = useContext(ContentContext);
+  return context || {};
+};
